@@ -1,0 +1,32 @@
+#pragma once
+#include "Common.h"
+
+
+typedef struct _IO_STATUS_BLOCK {
+    union {
+        NTSTATUS Status;
+        PVOID Pointer;
+    };
+    ULONG_PTR Information;
+}IO_STATUS_BLOCK, * PIO_STATUS_BLOCK;
+
+
+
+#ifndef NT_SUCCESS
+#define NT_SUCCESS(StatCode)  ((NTSTATUS)(StatCode) >= 0)
+#endif
+
+#define STATUS_SUCCESS                  (NTSTATUS)0x00000000
+#define STATUS_BUFFER_OVERFLOW           ((NTSTATUS)0x80000005L)
+#define STATUS_UNSUCCESSFUL              ((NTSTATUS)0xC0000001L)
+#define STATUS_INFO_LENGTH_MISMATCH      ((NTSTATUS)0xC0000004L)
+#define STATUS_NO_SUCH_DEVICE            ((NTSTATUS)0xC000000EL)
+#define STATUS_BUFFER_TOO_SMALL          ((NTSTATUS)0xC0000023L)
+#define STATUS_OBJECT_NAME_NOT_FOUND     ((NTSTATUS)0xC0000034L)
+#define STATUS_OBJECT_PATH_NOT_FOUND     ((NTSTATUS)0xC000003AL)
+#define STATUS_OBJECT_PATH_SYNTAX_BAD    ((NTSTATUS)0xC000003BL)
+#define STATUS_SERVER_DISABLED                  ((NTSTATUS)0xC0000080)
+
+
+
+

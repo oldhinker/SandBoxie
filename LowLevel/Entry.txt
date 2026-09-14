@@ -1,0 +1,326 @@
+00000000`000307c0 cc              int     3
+00000000`000307c1 4883ec28        sub     rsp,28h
+00000000`000307c5 48894c2420      mov     qword ptr [rsp+20h],rcx
+00000000`000307ca 4889542428      mov     qword ptr [rsp+28h],rdx
+00000000`000307cf 4c89442430      mov     qword ptr [rsp+30h],r8
+00000000`000307d4 4c894c2438      mov     qword ptr [rsp+38h],r9
+00000000`000307d9 e800000000      call    00000000`000307de
+00000000`000307de 59              pop     rcx
+00000000`000307df 488bd9          mov     rbx,rcx
+00000000`000307e2 4881c144010000  add     rcx,144h
+00000000`000307e9 488bd3          mov     rdx,rbx
+00000000`000307ec 4881c2f1000000  add     rdx,0F1h
+00000000`000307f3 4c8bc3          mov     r8,rbx
+00000000`000307f6 4981c03e000000  add     r8,3Eh
+00000000`000307fd e8fefaffff      call    00000000`00030300     EntryPointC(rcx,DetourCode,r8)
+00000000`00030807 488b542428      mov     rdx,qword ptr [rsp+28h]
+00000000`0003080c 4c8b442430      mov     r8,qword ptr [rsp+30h]
+00000000`00030811 4c8b4c2438      mov     r9,qword ptr [rsp+38h]
+00000000`00030816 4883c428        add     rsp,28h
+00000000`0003081a ffe0            jmp     rax
+
+
+rax LdrInitializeThunk
+00000000`00030952 fff3            push    rbx
+00000000`00030954 4883ec20        sub     rsp,20h
+00000000`00030958 e9e9b9b977      jmp     ntdll!LdrInitializeThunk+0x6 (00000000`77bcc346)
+00000000`0003095d 0000            add     byte ptr [rax],al
+00000000`0003095f 00b201488bcb    add     byte ptr [rdx-3474B7FFh],dh
+00000000`00030965 e888530200      call    00000000`00055cf2
+00000000`0003096a 8bc8            mov     ecx,eax
+00000000`0003096c e871140a00      call    00000000`000d1de2
+
+/*
+:000> dq rcx
+00000000`00030922  00000000`77ba0000 00000000`00040000
+00000000`00030932  00000000`00000004 12340036`00222007
+00000000`00030942  00000000`00000000 00000000`00000000
+00000000`00030952  e9e920ec`8348f3ff 01b20000`0077b9b9
+00000000`00030962  00025388`e8cb8b48 cc000a14`71e8c88b
+00000000`00030972  90909090`90909090 90909090`90909090
+00000000`00030982  00000031`b8d18b4c 0000441f`0fc3050f
+00000000`00030992  00000032`b8d18b4c 0000441f`0fc3050f
+
+DetourCode
+0:000> u 00000000`000308cf
+00000000`000308cf 488b05f1ffffff  mov     rax,qword ptr [00000000`000308c7]
+00000000`000308d6 56              push    rsi
+00000000`000308d7 4883ec40        sub     rsp,40h
+00000000`000308db 48894c2420      mov     qword ptr [rsp+20h],rcx
+00000000`000308e0 4889542428      mov     qword ptr [rsp+28h],rdx
+00000000`000308e5 4c89442430      mov     qword ptr [rsp+30h],r8
+00000000`000308ea 4c894c2438      mov     qword ptr [rsp+38h],r9
+00000000`000308ef 488bf0          mov     rsi,rax
+
+SystemService
+0:000> u 00000000`0003081c
+00000000`0003081c 48b80000000000000000 mov rax,0
+00000000`00030826 57              push    rdi
+00000000`00030827 53              push    rbx
+00000000`00030828 4c8b98e0000000  mov     r11,qword ptr [rax+0E0h]
+00000000`0003082f 4180c30f        add     r11b,0Fh
+00000000`00030833 498bdb          mov     rbx,r11
+00000000`00030836 4c8bdc          mov     r11,rsp
+00000000`00030839 4983c310        add     r11,10h
+*/
+
+
+EntryPointC(rcx,DetourCode,r8)
+00000000`00030300 4053            push    rbx
+00000000`00030302 56              push    rsi
+00000000`00030303 4156            push    r14
+00000000`00030305 4883ec50        sub     rsp,50h
+00000000`00030309 80792400        cmp     byte ptr [rcx+24h],0
+00000000`0003030d 4c8d7124        lea     r14,[rcx+24h]
+00000000`00030311 488bda          mov     rbx,rdx
+00000000`00030314 488bf1          mov     rsi,rcx
+00000000`00030317 0f85c2000000    jne     00000000`000303df
+00000000`0003031d 4c8b4908        mov     r9,qword ptr [rcx+8]
+00000000`00030321 48896c2478      mov     qword ptr [rsp+78h],rbp
+00000000`00030326 4c897c2440      mov     qword ptr [rsp+40h],r15
+00000000`0003032b 4983cfff        or      r15,0FFFFFFFFFFFFFFFFh
+00000000`0003032f 418b6904        mov     ebp,dword ptr [r9+4]
+00000000`00030333 4903e9          add     rbp,r9
+00000000`00030336 33c0            xor     eax,eax
+00000000`00030338 f04c0fb17d38    lock cmpxchg qword ptr [rbp+38h],r15 ss:00000000`00040d18=0000000000000000
+00000000`0003033e 0f8595000000    jne     00000000`000303d9
+00000000`00030344 498bd0          mov     rdx,r8
+00000000`00030347 48897c2448      mov     qword ptr [rsp+48h],rdi
+00000000`0003034c e89f000000      call    00000000`000303f0						 SyscallsPrepare(DataInfo, SystemService)
+00000000`00030351 488bd3          mov     rdx,rbx
+00000000`00030354 488bce          mov     rcx,rsi
+00000000`00030357 e8a4fcffff      call    00000000`00030000                      PrepareInjection(DataInfo,DetourCode)
+00000000`0003035c 488d442470      lea     rax,[rsp+70h]
+00000000`00030361 4c89742430      mov     qword ptr [rsp+30h],r14
+00000000`00030366 bf01000000      mov     edi,1
+00000000`0003036b 4889442420      mov     qword ptr [rsp+20h],rax
+00000000`00030370 488d9ec0000000  lea     rbx,[rsi+0C0h]
+00000000`00030377 4889bc2488000000 mov     qword ptr [rsp+88h],rdi
+00000000`0003037f 458d4f41        lea     r9d,[r15+41h]
+00000000`00030383 498bcf          mov     rcx,r15
+00000000`00030386 4c8d842488000000 lea     r8,[rsp+88h]
+00000000`0003038e 488d542430      lea     rdx,[rsp+30h]
+00000000`00030393 ffd3            call    rbx
+00000000`00030395 448b4c2470      mov     r9d,dword ptr [rsp+70h]
+00000000`0003039a 488d442470      lea     rax,[rsp+70h]
+00000000`0003039f 4c8d842488000000 lea     r8,[rsp+88h]
+00000000`000303a7 4889442420      mov     qword ptr [rsp+20h],rax
+00000000`000303ac 488d542430      lea     rdx,[rsp+30h]
+00000000`000303b1 41883e          mov     byte ptr [r14],dil
+00000000`000303b4 498bcf          mov     rcx,r15
+00000000`000303b7 ffd3            call    rbx
+00000000`000303b9 48877d38        xchg    rdi,qword ptr [rbp+38h]
+00000000`000303bd 488b7c2448      mov     rdi,qword ptr [rsp+48h]
+00000000`000303c2 488d4630        lea     rax,[rsi+30h]
+00000000`000303c6 488b6c2478      mov     rbp,qword ptr [rsp+78h]
+00000000`000303cb 4c8b7c2440      mov     r15,qword ptr [rsp+40h]
+00000000`000303d0 4883c450        add     rsp,50h
+00000000`000303d4 415e            pop     r14
+00000000`000303d6 5e              pop     rsi
+00000000`000303d7 5b              pop     rbx
+00000000`000303d8 c3              ret
+
+
+
+ PrepareInjection(DataInfo,DetourCode)
+
+00000000`000300cc ba5a4d0000      mov     edx,4D5Ah
+00000000`000300d1 48894628        mov     qword ptr [rsi+28h],rax
+00000000`000300d5 4885c0          test    rax,rax
+
+0:000> dq rax
+00000000`77bc7ac0  6c894810`245c8948 83485441`57561824
+0:000> u 00000000`77bc7ac0
+ntdll!LdrLoadDl
+
+
+00000000`00030147 4c8d8c2480000000 lea     r9,[rsp+80h]
+00000000`0003014f 498bcf          mov     rcx,r15
+00000000`00030152 e849050000      call    00000000`000306a0
+00000000`00030157 488bf8          mov     rdi,rax
+
+0:000> dq rax
+00000000`77bf84b0  202444c7`38ec8348 fffcbfe8`00000000
+0:000> u 00000000`77bf84b0
+ntdll!LdrGetProcedureAddress:
+
+
+
+
+
+typedef struct _INJECT_DATA {
+
+    ULONG64 DataInfo;           
+
+    ULONG64 RtlFindActCtx;         
+    ULONG RtlFindActCtx_Protect;
+    UCHAR RtlFindActCtx_Bytes[20];
+
+    ULONG64 LdrLoadDll;
+    ULONG64 LdrGetProcAddr;
+    ULONG64 NtProtectVirtualMemory;
+    ULONG64 NtRaiseHardError;
+    ULONG64 NtDeviceIoControlFile;
+    ULONG64 DeviceHandle;
+
+    UNIVERSAL_STRING KernelDll;
+    UNIVERSAL_STRING NativeDll;
+
+} INJECT_DATA;
+InjectData
+0:000> dq rsi 
+00000000`00040e48  00000000`00030922(DataInfo)	                00000000`77bf8720(RtlFindActCtx)
+00000000`00040e58  00000000`00000000			                00000000`00000000
+00000000`00040e68  00000000`00000000			                00000000`77bc7ac0(LdrLoadDll)
+00000000`00040e78  00000000`77bf84b0(LdrGetProcAddr)			00000000`77bf17b0(NtProtectVirtualMemory)
+00000000`00040e88  00000000`77bf25e0(NtRaiseHardError)			00000000`000309a2(NtDeviceIoControlFile)
+00000000`00040e98  00000000`00000004(DeviceHandle)			    00040dc4`001a0018
+00000000`00040ea8  00000000`00040dc4(KernelDll)			        00000000`006a0068
+00000000`00040eb8  00000000`00040dde(NativeDll)			        00000000`00000000
+
+0:000> u 00000000`77bf25e0
+ntdll!NtRaiseHardError:
+00000000`77bf25e0 4c8bd1          mov     r10,rcx
+00000000`77bf25e3 b830010000      mov     eax,130h
+00000000`77bf25e8 0f05            syscall
+00000000`77bf25ea c3              ret
+
+
+0:000> u 00000000`000309a2
+00000000`000309a2 4c8bd1          mov     r10,rcx
+00000000`000309a5 b804000000      mov     eax,4
+00000000`000309aa 0f05            syscall
+00000000`000309ac c3              ret
+
+0:000> u NtDeviceIoControlFile
+ntdll!ZwDeviceIoControlFile:
+00000000`77bf1320 4c8bd1          mov     r10,rcx
+00000000`77bf1323 b804000000      mov     eax,4
+00000000`77bf1328 0f05            syscall
+00000000`77bf132a c3              ret
+
+
+
+InjectData->NtProtectVirtualMemory = DataInfo->NtProtectVirtualMemory;   //Ntdll导出函数的地址
+InjectData->NtRaiseHardError = DataInfo->NtRaiseHardError;               //导出函数
+InjectData->NtDeviceIoControlFile = DataInfo->NtDeviceIoControlFile;     //字节指令
+
+
+0:000> db 00000000`00040dde
+00000000`00040dde  43 00 3a 00 5c 00 55 00-73 00 65 00 72 00 73 00  C.:.\.U.s.e.r.s.
+00000000`00040dee  5c 00 53 00 68 00 69 00-6e 00 65 00 5c 00 44 00  \.S.h.i.n.e.\.D.
+00000000`00040dfe  65 00 73 00 6b 00 74 00-6f 00 70 00 5c 00 28 00  e.s.k.t.o.p.\.(.
+00000000`00040e0e  32 00 38 00 29 00 53 00-61 00 6e 00 64 00 42 00  2.8.).S.a.n.d.B.
+00000000`00040e1e  6f 00 78 00 5c 00 78 00-36 00 34 00 5c 00 44 00  o.x.\.x.6.4.\.D.
+00000000`00040e2e  65 00 62 00 75 00 67 00-5c 00 44 00 6c 00 6c 00  e.b.u.g.\.D.l.l.
+00000000`00040e3e  2e 00 64 00 6c 00 6c 00-00 00 22 09 03 00 00 00  ..d.l.l...".....
+
+
+0:000> db 00000000`00040dc4
+00000000`00040dc4  6b 00 65 00 72 00 6e 00-65 00 6c 00 33 00 32 00  k.e.r.n.e.l.3.2.
+00000000`00040dd4  2e 00 64 00 6c 00 6c 00-00 00 43 00 3a 00 5c 00  ..d.l.l..
+
+
+Hook前::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+0:000> u 00000000`77bf8720
+ntdll!RtlFindActivationContextSectionString:
+00000000`77bf8720 fff7            push    rdi
+00000000`77bf8722 4154            push    r12
+00000000`77bf8724 4155            push    r13
+00000000`77bf8726 4156            push    r14
+00000000`77bf8728 4881ec98000000  sub     rsp,98h
+00000000`77bf872f 8bf9            mov     edi,ecx
+00000000`77bf8731 65488b0c2530000000 mov   rcx,qword ptr gs:[30h]
+00000000`77bf873a 4d8bf1          mov     r14,r9
+
+
+
+
+HookCode = (UCHAR*)DetourCode;
+BaseAddress = (void*)(HookCode - 8);
+RegionSize = sizeof(ULONG_PTR);
+CALL(NtProtectVirtualMemory)(
+    NtCurrentProcess(), &BaseAddress, &RegionSize,
+    PAGE_EXECUTE_READWRITE, &OldProtect);
+      
+0:000> u 00000000`000308cf(HookCode)
+00000000`000308cf 488b05f1ffffff  mov     rax,qword ptr [00000000`000308c7]
+00000000`000308d6 56              push    rsi
+00000000`000308d7 4883ec40        sub     rsp,40h
+00000000`000308db 48894c2420      mov     qword ptr [rsp+20h],rcx
+00000000`000308e0 4889542428      mov     qword ptr [rsp+28h],rdx
+00000000`000308e5 4c89442430      mov     qword ptr [rsp+30h],r8
+00000000`000308ea 4c894c2438      mov     qword ptr [rsp+38h],r9
+00000000`000308ef 488bf0 
+
+
+0:000> dq rbx
+00000000`000308c7  00000000`00000000 56ffffff`f1058b48
+00000000`000308d7  244c8948`40ec8348 894c2824`54894820
+00000000`000308e7  38244c89`4c302444 3348ce8b`48f08b48
+00000000`000308f7  e8c9334d`c0334dd2 244c8b48`fffff9ed
+00000000`00030907  8b4c2824`548b4820 38244c8b`4c302444
+00000000`00030917  08468b48`40c48348 0077ba00`00e0ff5e
+00000000`00030927  00000400`00000000 00000000`04000000
+00000000`00030937  36002220`07000000 00000000`00123400
+
+*(ULONG_PTR*)(HookCode - 8) = (ULONG_PTR)InjectData;
+
+0:000> dq rbx
+00000000`000308c7  00000000`00040e48 56ffffff`f1058b48
+00000000`000308d7  244c8948`40ec8348 894c2824`54894820
+00000000`000308e7  38244c89`4c302444 3348ce8b`48f08b48
+00000000`000308f7  e8c9334d`c0334dd2 244c8b48`fffff9ed
+00000000`00030907  8b4c2824`548b4820 38244c8b`4c302444
+00000000`00030917  08468b48`40c48348 0077ba00`00e0ff5e
+00000000`00030927  00000400`00000000 00000000`04000000
+00000000`00030937  36002220`07000000 00000000`00123400
+
+
+
+CALL(NtProtectVirtualMemory)(
+    NtCurrentProcess(), &BaseAddress, &RegionSize,
+    OldProtect, &OldProtect);
+
+BaseAddress = (void*)&HookTarget[0]; // RtlFindActCtx
+RegionSize = 12;
+CALL(NtProtectVirtualMemory)(
+    NtCurrentProcess(), &BaseAddress, &RegionSize,
+    PAGE_EXECUTE_READWRITE, &InjectData->RtlFindActCtx_Protect);
+memcpy(InjectData->RtlFindActCtx_Bytes, HookTarget, 12);
+
+HookTarget[0] = 0x48;
+HookTarget[1] = 0xb8;
+*(ULONG_PTR*)&HookTarget[2] = (ULONG_PTR)HookCode;
+HookTarget[10] = 0xff;
+HookTarget[11] = 0xe0;
+
+
+Hook后:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+0:000> u 00000000`77bf8720
+ntdll!RtlFindActivationContextSectionString:
+00000000`77bf8720 48b8cf08030000000000 mov rax,308CFh
+00000000`77bf872a ffe0            jmp     rax
+00000000`77bf872c 0000            add     byte ptr [rax],al
+00000000`77bf872e 008bf965488b    add     byte ptr [rbx-74B79A07h],cl
+00000000`77bf8734 0c25            or      al,25h
+00000000`77bf8736 3000            xor     byte ptr [rax],al
+00000000`77bf8738 0000            add     byte ptr [rax],al
+00000000`77bf873a 4d8bf1          mov     r14,r9
+
+0:000> u 308CF
+00000000`000308cf 488b05f1ffffff  mov     rax,qword ptr [00000000`000308c7]
+00000000`000308d6 56              push    rsi
+00000000`000308d7 4883ec40        sub     rsp,40h
+00000000`000308db 48894c2420      mov     qword ptr [rsp+20h],rcx
+00000000`000308e0 4889542428      mov     qword ptr [rsp+28h],rdx
+00000000`000308e5 4c89442430      mov     qword ptr [rsp+30h],r8
+00000000`000308ea 4c894c2438      mov     qword ptr [rsp+38h],r9
+00000000`000308ef 488bf0          mov     rsi,rax
+
+
+
+
+
+
+

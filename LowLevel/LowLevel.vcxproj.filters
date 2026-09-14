@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="源文件\资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="源文件\内存帮助">
+      <UniqueIdentifier>{9475a995-3faa-45d9-8e32-9dec9bf02327}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\注入帮助">
+      <UniqueIdentifier>{0bc4d921-989e-45d7-bca0-536fc1772987}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pe帮助">
+      <UniqueIdentifier>{7f143bc3-b152-497a-a4f2-5104e1616072}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="LowLevel.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MemoryHelper.c">
+      <Filter>源文件\内存帮助</Filter>
+    </ClCompile>
+    <ClCompile Include="InjectHelper.c">
+      <Filter>源文件\注入帮助</Filter>
+    </ClCompile>
+    <ClCompile Include="PeHelper.c">
+      <Filter>Pe帮助</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="Entry.asm">
+      <Filter>源文件</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="LowLevel.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryHelper.h">
+      <Filter>源文件\内存帮助</Filter>
+    </ClInclude>
+    <ClInclude Include="InjectHelper.h">
+      <Filter>源文件\注入帮助</Filter>
+    </ClInclude>
+    <ClInclude Include="StringHelper.h">
+      <Filter>源文件\注入帮助</Filter>
+    </ClInclude>
+    <ClInclude Include="PeHelper.h">
+      <Filter>Pe帮助</Filter>
+    </ClInclude>
+    <ClInclude Include="Common.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Entry.txt">
+      <Filter>源文件</Filter>
+    </Text>
+  </ItemGroup>
+</Project>

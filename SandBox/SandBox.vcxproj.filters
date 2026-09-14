@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="注入帮助">
+      <UniqueIdentifier>{af88e01c-b26a-4080-b75b-6e3e04802b95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IoRequest">
+      <UniqueIdentifier>{83a09f76-8853-4871-9609-59b661be0613}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="状态关联">
+      <UniqueIdentifier>{0e3d9ff7-58c5-4121-a5c6-93d642485ffc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="进程帮助">
+      <UniqueIdentifier>{486c83ea-bb94-49a7-879f-73f40a7d9432}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="系统帮助">
+      <UniqueIdentifier>{8ab0b8c8-0667-46d6-ac5a-55df7a9a681a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="内存帮助">
+      <UniqueIdentifier>{9a9b7264-f8bd-4d34-a105-3f4d8af6bd88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="文件帮助">
+      <UniqueIdentifier>{bde7c433-4563-4f4c-813e-3bb81607a321}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="_tWinMain.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DriverAssist.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="InjectHelper.cpp">
+      <Filter>注入帮助</Filter>
+    </ClCompile>
+    <ClCompile Include="StringHelper.cpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectHelper.cpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="IoRequest.cpp">
+      <Filter>IoRequest</Filter>
+    </ClCompile>
+    <ClCompile Include="ApiHelper.cpp">
+      <Filter>IoRequest</Filter>
+    </ClCompile>
+    <ClCompile Include="SystmeHelper.cpp">
+      <Filter>系统帮助</Filter>
+    </ClCompile>
+    <ClCompile Include="MemoryHelper.cpp">
+      <Filter>内存帮助</Filter>
+    </ClCompile>
+    <ClCompile Include="FileHelper.cpp">
+      <Filter>文件帮助</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="_tWinMain.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Common.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DriverAssist.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="InjectHelper.h">
+      <Filter>注入帮助</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="StringHelper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectHelper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="IoRequest.h">
+      <Filter>IoRequest</Filter>
+    </ClInclude>
+    <ClInclude Include="ApiHelper.h">
+      <Filter>IoRequest</Filter>
+    </ClInclude>
+    <ClInclude Include="StatusHelper.h">
+      <Filter>状态关联</Filter>
+    </ClInclude>
+    <ClInclude Include="ProcessHelper.h">
+      <Filter>进程帮助</Filter>
+    </ClInclude>
+    <ClInclude Include="SystemHelper.h">
+      <Filter>系统帮助</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryHelper.h">
+      <Filter>内存帮助</Filter>
+    </ClInclude>
+    <ClInclude Include="FileHelper.h">
+      <Filter>文件帮助</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SandBox.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="学习笔记.txt" />
+  </ItemGroup>
+</Project>

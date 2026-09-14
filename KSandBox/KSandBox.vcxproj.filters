@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Driver Files">
+      <UniqueIdentifier>{8E41214B-6785-4CFE-B992-037D68949A14}</UniqueIdentifier>
+      <Extensions>inf;inv;inx;mof;mc;</Extensions>
+    </Filter>
+    <Filter Include="系统帮助">
+      <UniqueIdentifier>{2dfad3dc-7a98-4ae7-862c-3aa6ef7a9426}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="对象帮助">
+      <UniqueIdentifier>{8b2ab371-3c45-494e-9310-79c5d71aad80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="内存管理">
+      <UniqueIdentifier>{12024ce6-9d3d-4e17-a726-c1ab56de77ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="进程管理">
+      <UniqueIdentifier>{d7e2748d-cc8c-436e-80bf-5614e4fcdc22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IoRequest">
+      <UniqueIdentifier>{307b9320-8eea-48fd-88bf-313302acf143}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GuiHelper">
+      <UniqueIdentifier>{66145718-243e-4de7-918a-96b48b235b63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="系统帮助\PeHelper">
+      <UniqueIdentifier>{55ce9d2e-1aac-493e-a8ef-9b2b2d2a940c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="进程管理\进程Helper">
+      <UniqueIdentifier>{ffc19e5e-f8bf-4c2b-b453-3413060a058b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="进程管理\进程过滤">
+      <UniqueIdentifier>{35965409-daa8-40d6-93f4-2d1baeb6066d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="进程管理\模块过滤">
+      <UniqueIdentifier>{69c18d77-6e1c-4afe-9233-4fb398b50e3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="对象帮助\文件管理">
+      <UniqueIdentifier>{46fc907c-39e8-44c7-970e-d094e2a94c7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Ipc帮助">
+      <UniqueIdentifier>{d9e5ee6f-398a-4fc9-930b-1af24e67b510}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="SystemHelper.c">
+      <Filter>系统帮助</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectHelper.c">
+      <Filter>对象帮助</Filter>
+    </ClCompile>
+    <ClCompile Include="MemoryPool.c">
+      <Filter>内存管理</Filter>
+    </ClCompile>
+    <ClCompile Include="MemoryList.c">
+      <Filter>内存管理</Filter>
+    </ClCompile>
+    <ClCompile Include="MemoryHelper.c">
+      <Filter>内存管理</Filter>
+    </ClCompile>
+    <ClCompile Include="MemoryLock.c">
+      <Filter>内存管理</Filter>
+    </ClCompile>
+    <ClCompile Include="InjectHelper.c">
+      <Filter>进程管理</Filter>
+    </ClCompile>
+    <ClCompile Include="IoRequest.c">
+      <Filter>IoRequest</Filter>
+    </ClCompile>
+    <ClCompile Include="ApiHelper.c">
+      <Filter>IoRequest</Filter>
+    </ClCompile>
+    <ClCompile Include="GuiHelper.c">
+      <Filter>GuiHelper</Filter>
+    </ClCompile>
+    <ClCompile Include="PeHelper.c">
+      <Filter>系统帮助\PeHelper</Filter>
+    </ClCompile>
+    <ClCompile Include="Syscall_32.c">
+      <Filter>系统帮助</Filter>
+    </ClCompile>
+    <ClCompile Include="Syscall_64.c">
+      <Filter>系统帮助</Filter>
+    </ClCompile>
+    <ClCompile Include="Syscall.c">
+      <Filter>系统帮助</Filter>
+    </ClCompile>
+    <ClCompile Include="DriverEntry.c">
+      <Filter>Driver Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Box.c">
+      <Filter>Driver Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FileHelper.c">
+      <Filter>对象帮助\文件管理</Filter>
+    </ClCompile>
+    <ClCompile Include="ProcessHelper.c">
+      <Filter>进程管理\进程Helper</Filter>
+    </ClCompile>
+    <ClCompile Include="ProcessNotify.c">
+      <Filter>进程管理\进程过滤</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageNotify.c">
+      <Filter>进程管理\模块过滤</Filter>
+    </ClCompile>
+    <ClCompile Include="ProcessForce.c">
+      <Filter>进程管理\进程Helper</Filter>
+    </ClCompile>
+    <ClCompile Include="IpcHelper.c">
+      <Filter>Ipc帮助</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SystemHelper.h">
+      <Filter>系统帮助</Filter>
+    </ClInclude>
+    <ClInclude Include="Common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectHelper.h">
+      <Filter>对象帮助</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryPool.h">
+      <Filter>内存管理</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryList.h">
+      <Filter>内存管理</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryHelper.h">
+      <Filter>内存管理</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryLock.h">
+      <Filter>内存管理</Filter>
+    </ClInclude>
+    <ClInclude Include="InjectHelper.h">
+      <Filter>进程管理</Filter>
+    </ClInclude>
+    <ClInclude Include="IoRequest.h">
+      <Filter>IoRequest</Filter>
+    </ClInclude>
+    <ClInclude Include="ApiHelper.h">
+      <Filter>IoRequest</Filter>
+    </ClInclude>
+    <ClInclude Include="GuiHelper.h">
+      <Filter>GuiHelper</Filter>
+    </ClInclude>
+    <ClInclude Include="PeHelper.h">
+      <Filter>系统帮助\PeHelper</Filter>
+    </ClInclude>
+    <ClInclude Include="Syscall.h">
+      <Filter>系统帮助</Filter>
+    </ClInclude>
+    <ClInclude Include="DriverEntry.h">
+      <Filter>Driver Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Box.h">
+      <Filter>Driver Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FileHelper.h">
+      <Filter>对象帮助\文件管理</Filter>
+    </ClInclude>
+    <ClInclude Include="ProcessHelper.h">
+      <Filter>进程管理\进程Helper</Filter>
+    </ClInclude>
+    <ClInclude Include="ProcessNotify.h">
+      <Filter>进程管理\进程过滤</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageNotify.h">
+      <Filter>进程管理\模块过滤</Filter>
+    </ClInclude>
+    <ClInclude Include="ProcessForce.h">
+      <Filter>进程管理\进程Helper</Filter>
+    </ClInclude>
+    <ClInclude Include="IpcHelper.h">
+      <Filter>Ipc帮助</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="头文件\注入帮助">
+      <UniqueIdentifier>{ab1fcb85-2562-40ac-bfc0-e9238e17894d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\IoRequest">
+      <UniqueIdentifier>{22d7e126-9a67-433b-a28b-ec4bbcee46df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\字符串帮助">
+      <UniqueIdentifier>{e2471b7b-2288-4a4e-b8f1-83e5aeb1fccb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hook">
+      <UniqueIdentifier>{38ecfd46-fcfa-47e1-bc1f-5c5c50cb6d85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\线程帮助">
+      <UniqueIdentifier>{5c7dafbd-4c0d-4cac-9393-d48257bb2341}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\对象">
+      <UniqueIdentifier>{c42711bf-b185-403c-9948-1b904721e19b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\对象\对象Hook">
+      <UniqueIdentifier>{6c5b5d15-ab58-456a-9f87-9462968a18fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\对象\文件帮助">
+      <UniqueIdentifier>{17588944-0303-401c-a9a3-2f674d44e27a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\对象\对象帮助">
+      <UniqueIdentifier>{8fe30b47-bfc7-41e6-a782-2f32097d2c50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\内存">
+      <UniqueIdentifier>{79af3079-7cd9-4668-a5f1-bda8afe98b7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\内存\内存Hook">
+      <UniqueIdentifier>{58601888-444a-4361-8677-1c81b9402d2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Ipc">
+      <UniqueIdentifier>{f3785db2-d099-4741-8aae-2b9676259240}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Ipc\IpcHook">
+      <UniqueIdentifier>{7c87796e-0256-4833-9cde-6a9d4f2d9faa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Ipc\IpcHelper">
+      <UniqueIdentifier>{010575ac-5da3-424b-a16d-91bb63b11428}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ExportServices.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Common.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="InjectionHelper.h">
+      <Filter>头文件\注入帮助</Filter>
+    </ClInclude>
+    <ClInclude Include="ApiHelper.h">
+      <Filter>头文件\IoRequest</Filter>
+    </ClInclude>
+    <ClInclude Include="IoRequest.h">
+      <Filter>头文件\IoRequest</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectHelper.h">
+      <Filter>头文件\对象\对象帮助</Filter>
+    </ClInclude>
+    <ClInclude Include="FileHelper.h">
+      <Filter>头文件\对象\文件帮助</Filter>
+    </ClInclude>
+    <ClInclude Include="dllmain.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="StringHelper.h">
+      <Filter>头文件\字符串帮助</Filter>
+    </ClInclude>
+    <ClInclude Include="StatusHelper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryHelper.h">
+      <Filter>头文件\内存</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryPool.h">
+      <Filter>头文件\内存</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryList.h">
+      <Filter>头文件\内存</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryLock.h">
+      <Filter>头文件\内存</Filter>
+    </ClInclude>
+    <ClInclude Include="HookHelper.h">
+      <Filter>Hook</Filter>
+    </ClInclude>
+    <ClInclude Include="Trampoline.h">
+      <Filter>Hook</Filter>
+    </ClInclude>
+    <ClInclude Include="InstructionAnalyze.h">
+      <Filter>Hook</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadHelper.h">
+      <Filter>头文件\线程帮助</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryHook.h">
+      <Filter>头文件\内存\内存Hook</Filter>
+    </ClInclude>
+    <ClInclude Include="IpcHook.h">
+      <Filter>头文件\Ipc\IpcHook</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectHook.h">
+      <Filter>头文件\对象\对象Hook</Filter>
+    </ClInclude>
+    <ClInclude Include="IpcHelper.h">
+      <Filter>头文件\Ipc\IpcHelper</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ExportServices.cpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="InjectionHelper.cpp">
+      <Filter>头文件\注入帮助</Filter>
+    </ClCompile>
+    <ClCompile Include="ApiHelper.cpp">
+      <Filter>头文件\IoRequest</Filter>
+    </ClCompile>
+    <ClCompile Include="IoRequest.cpp">
+      <Filter>头文件\IoRequest</Filter>
+    </ClCompile>
+    <ClCompile Include="FileHelper.cpp">
+      <Filter>头文件\对象\文件帮助</Filter>
+    </ClCompile>
+    <ClCompile Include="StringHelper.cpp">
+      <Filter>头文件\字符串帮助</Filter>
+    </ClCompile>
+    <ClCompile Include="MemoryHelper.cpp">
+      <Filter>头文件\内存</Filter>
+    </ClCompile>
+    <ClCompile Include="MemoryPool.cpp">
+      <Filter>头文件\内存</Filter>
+    </ClCompile>
+    <ClCompile Include="MemoryList.cpp">
+      <Filter>头文件\内存</Filter>
+    </ClCompile>
+    <ClCompile Include="MemoryLock.cpp">
+      <Filter>头文件\内存</Filter>
+    </ClCompile>
+    <ClCompile Include="HookHelper.cpp">
+      <Filter>Hook</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectHelper.cpp">
+      <Filter>头文件\对象\对象帮助</Filter>
+    </ClCompile>
+    <ClCompile Include="Trampoline.cpp">
+      <Filter>Hook</Filter>
+    </ClCompile>
+    <ClCompile Include="InstructionAnalyze.cpp">
+      <Filter>Hook</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadHelper.cpp">
+      <Filter>头文件\线程帮助</Filter>
+    </ClCompile>
+    <ClCompile Include="MemoryHook.cpp">
+      <Filter>头文件\内存\内存Hook</Filter>
+    </ClCompile>
+    <ClCompile Include="IpcHook.cpp">
+      <Filter>头文件\Ipc\IpcHook</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectHook.cpp">
+      <Filter>头文件\对象\对象Hook</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Source.def">
+      <Filter>源文件</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="Entry.asm">
+      <Filter>头文件</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

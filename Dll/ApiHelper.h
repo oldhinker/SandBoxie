@@ -1,0 +1,192 @@
+#pragma once
+#include "Common.h"
+#include "StringHelper.h"
+
+enum {
+	FIRST_1 = 0x12340000L,
+
+	GET_DRIVER_VERSION,							//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	GET_WORK_DEPRECATED,    			    // deprecated
+	LOG_MESSAGE,
+	GET_LICENSE_PRE_V3_48_DEPRECATED,       // deprecated
+	SET_LICENSE_PRE_V3_48_DEPRECATED,       // deprecated
+	START_PROCESS_PRE_V3_44_DEPRECATED,     // deprecated
+	QUERY_PROCESS,
+	QUERY_BOX_PATH,
+	QUERY_PROCESS_PATH,
+	QUERY_PATH_LIST,
+	ENUM_PROCESSES,
+	DISABLE_FORCE_PROCESS,
+	HOOK_TRAMP_DEPRECATED,					// deprecated
+	UNMOUNT_HIVES_DEPRECATED,               // deprecated
+	QUERY_CONF,
+	RELOAD_CONF,
+	CREATE_DIR_OR_LINK,
+	DUPLICATE_OBJECT,
+	GET_INJECT_SAVE_AREA_DEPRECATED,        // deprecated
+	RENAME_FILE,
+	SET_USER_NAME,
+	START_PROCESS_NOTIFY,
+	UNLOAD_DRIVER,
+	GET_SET_DEVICE_MAP_DEPRECATED,          // deprecated
+	SESSION_SET_LEADER_DEPRECATED,          // deprecated
+	GLOBAL_FORCE_PROCESS_DEPRECATED,        // deprecated
+	MONITOR_CONTROL,
+	MONITOR_PUT_DEPRECATED,                 // deprecated
+	MONITOR_GET_DEPRECATED,                 // deprecated
+	GET_UNMOUNT_HIVE,
+	GET_FILE_NAME,
+	REFRESH_FILE_PATH_LIST,
+	SET_LSA_AUTH_PKG,
+	OPEN_FILE,
+	SESSION_CHECK_LEADER_DEPRECATED,        // deprecated
+	START_PROCESS,
+	CHECK_INTERNET_ACCESS,
+	GET_HOME_PATH,
+	GET_BLOCKED_DLL,
+	QUERY_LICENSE,
+	ACTIVATE_LICENSE_DEPRECATED,            // deprecated
+	OPEN_DEVICE_MAP,
+	OPEN_PROCESS,
+	QUERY_PROCESS_INFO,
+	IS_BOX_ENABLED,
+	SESSION_LEADER,
+	QUERY_SYMBOLIC_LINK,
+	OPEN_KEY,
+	SET_LOW_LABEL_KEY,
+	OVERRIDE_PROCESS_TOKEN_DEPRECATED,      // deprecated
+	SET_SERVICE_PORT,                       //  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	INJECT_COMPLETE,
+	QUERY_SYSCALLS,
+	INVOKE_SYSCALLS,
+	GUI_CLIPBOARD,
+	ALLOW_SPOOLER_PRINT_TO_FILE_DEPRECATED, // deprecated
+	RELOAD_CONF2,                           // unused
+	MONITOR_PUT2,
+	GET_SPOOLER_PORT_DEPRECATED,            // deprecated
+	GET_WPAD_PORT_DEPRECATED,               // deprecated
+	SET_GAME_CONFIG_STORE_PORT_DEPRECATED,  // deprecated
+	SET_SMART_CARD_PORT_DEPRECATED,         // deprecated
+	MONITOR_GET_EX,
+	GET_MESSAGE,
+	PROCESS_EXEMPTION_CONTROL,
+	GET_DYNAMIC_PORT_FROM_PID,
+	OPEN_DYNAMIC_PORT,
+	QUERY_DRIVER_INFO,
+	FILTER_TOKEN,
+	SET_SECURE_PARAM,
+	GET_SECURE_PARAM,
+	MONITOR_GET2,
+	PROTECT_ROOT,
+	UNPROTECT_ROOT,
+	KILL_PROCESS,
+	FORCE_CHILDREN,
+	MONITOR_PUT_EX,
+	UPDATE_CONF,
+	VERIFY,
+
+	LAST_1
+};
+
+
+
+
+#define API_NUMBER_ARGS                8
+
+
+#define API_ARGS_BEGIN(x)           typedef struct _##x { ULONG64 ServiceIndex;
+#define API_ARGS_FIELD(t,m)         union { ULONG64 Value64; t Value; } m;
+#define API_ARGS_CLOSE(x)           } x;
+
+
+
+API_ARGS_BEGIN(QUERY_PROCESS_ARGS)
+API_ARGS_FIELD(HANDLE, ProcessIdentity)
+API_ARGS_FIELD(UNICODE_STRING64*, BoxName)
+API_ARGS_FIELD(UNICODE_STRING64*, ImageName)
+API_ARGS_FIELD(UNICODE_STRING64*, SidString)
+API_ARGS_FIELD(ULONG*, SessionIdentity)
+API_ARGS_FIELD(ULONG64*, CreateTime)
+API_ARGS_CLOSE(QUERY_PROCESS_ARGS)
+
+LONG QueryProcessEx(
+    HANDLE ProcessIdentity,
+    ULONG  NameLength,
+    WCHAR* BoxName,
+    WCHAR* ImageName,
+    WCHAR* SidString,
+    ULONG* SessionIdentity,
+    ULONG64* CreateTime);
+
+
+LONG QueryDriverInfo(ULONG InfoClass, VOID* BufferData, ULONG DataLength);
+
+
+
+
+API_ARGS_BEGIN(API_QUERY_PROCESS_INFO_ARGS)
+API_ARGS_FIELD(HANDLE, ProcessIdentity)
+API_ARGS_FIELD(ULONG, InfoType) // in
+API_ARGS_FIELD(ULONG64*, ResultValue) // out
+API_ARGS_FIELD(ULONG64, BufferData) // opt in
+API_ARGS_CLOSE(API_QUERY_PROCESS_INFO_ARGS)
+ULONG64 QueryProcessInfoEx(
+	HANDLE ProcessIdentity,
+	ULONG  InfoType,
+	ULONG64 BufferData);
+
+
+
+
+LONG EnumProcessEx(
+	const WCHAR* BoxName,          // WCHAR [BOXNAME_COUNT]
+	BOOLEAN IsAllSessions,
+	ULONG WichSession,            // -1 for current session
+	ULONG* ProcessIdentitys,              // ULONG [512]
+	ULONG* Count);
+
+
+
+
+API_ARGS_BEGIN(API_GET_FILE_NAME_ARGS)
+API_ARGS_FIELD(HANDLE, FileHandle)
+API_ARGS_FIELD(ULONG*, NameData)
+API_ARGS_FIELD(WCHAR*, DataLength)
+API_ARGS_FIELD(WCHAR*, ObjectType)
+API_ARGS_CLOSE(API_GET_FILE_NAME_ARGS)
+LONG GetFileName(
+	HANDLE FileHandle,
+	WCHAR* NameData,
+	ULONG* DataLength,
+	ULONG* ObjectType);
+
+
+
+API_ARGS_BEGIN(API_QUERY_BOX_PATH_ARGS)
+API_ARGS_FIELD(WCHAR*, BoxName)
+API_ARGS_FIELD(UNICODE_STRING64*, FilePath)
+API_ARGS_FIELD(UNICODE_STRING64*, KeyPath)
+API_ARGS_FIELD(UNICODE_STRING64*, IpcPath)
+API_ARGS_FIELD(ULONG*, FileLength)
+API_ARGS_FIELD(ULONG*, KeyLength)
+API_ARGS_FIELD(ULONG*, IpcLength)
+API_ARGS_CLOSE(API_QUERY_BOX_PATH_ARGS)
+
+LONG QueryBoxPath(
+	const WCHAR* BoxName,              // WCHAR [BOXNAME_COUNT]
+	WCHAR* FilePath,
+	WCHAR* KeyPath,
+	WCHAR* IpcPath,
+	ULONG* FileLength,
+	ULONG* KeyLength,
+	ULONG* IpcLength);
+
+
+API_ARGS_BEGIN(API_CREATE_DIR_OR_LINK_ARGS)
+API_ARGS_FIELD(UNICODE_STRING64*, ObjectName)
+API_ARGS_FIELD(UNICODE_STRING64*, TargetName)
+API_ARGS_CLOSE(API_CREATE_DIR_OR_LINK_ARGS)
+
+LONG CreateDirOrLink(
+	const WCHAR* ObjectName,
+	const WCHAR* TargetName);

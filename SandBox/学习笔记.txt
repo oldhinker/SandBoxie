@@ -1,0 +1,33 @@
+
+//Ring3
+
+//1.创建Port通信 获得ProtHandle															InitializePortAndThreads()
+//2.提供内存通过FastIo请求Ring0层调用__CommonServices[DriverVersion]					StartDriverAsync() 
+//3.将PortHandle通过FastIo请求传递给Ring0__CommonServices[SetServicePort]               StartDriverAsync()
+//4.构建接收端口回来的数据的线程和等待处理数据的线程                                        InitializePortAndThreads()
+//5.根据处理数据的结果进行派发
+//6.InjectLowReply
+
+//7.开启Ring0的进程拦截                                                                   StartDriverAsync() 
+
+
+
+
+
+
+//Ring0
+
+//1.创建设备对象                               InitializeCommonData()
+//2.对Ring3的GetDriverVersion请求进行处理	   FastIoDeviceControl()
+//3.对Ring3的SetServicePort请求进行处理        PortHandle--->PortObject
+//4.CreateProcessNotify拦截进程构建MessageData传送Ring3
+
+
+
+
+
+//释放内存
+//__HomePath1
+//__HomePath2
+//__SyscallsList
+//__SyscallsCode
